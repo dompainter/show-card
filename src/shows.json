@@ -1,0 +1,13 @@
+[ {
+  "name": "Home and Away",
+  "image": "home-and-away.jpg",
+  "channel": "7"
+}, {
+  "name": "Storage Wars",
+  "image": "storage-wars.jpg",
+  "channel": "7-mate"
+}, {
+  "name": "Million Dollar Minute",
+  "image": "million-dollar-minute.jpg",
+  "channel": "7-two"
+} ]
