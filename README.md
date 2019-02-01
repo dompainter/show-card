@@ -13,17 +13,25 @@ The page will reload if you make edits.<br>
 
 Launches the test runner in the interactive watch mode.<br>
 
+### APPROACH
 
-Create a responsive card component that looks like the attached composite image (card.png). Use styled-components
-on a simple React view to accomplish that. Develop unit tests using your preferred test framework. Write a
-README.md with your assumptions, why did you pick that approach, what you could have done better if time was not
-a constraint. Push your code to Github and host a working demo of the solution using Github Pages.
+I have created a show case containing an active show hero along with a list of shows below.
+The reason for this approach is that a show card is likely to have some interaction elements on a site,
+be that to take a user to find out more information about the show or to activate that show in a player.
+Therefore, rather than creating a single card, demonstrate the re-usability of components to render multiple
+show cards.
+Utilising FlexBox allows for a responsive solution that expands items and stacks shows when viewed in a smaller viewport.
+Tested using Enzyme and Jest.
+Created with create-react-app as a starter.
 
-Links
-HYPERLINK "https://styled-components.com/" https://styled-components.com/
-HYPERLINK "https://pages.github.com/" https://pages.github.com/
+### WITH MORE TIME
+
+- Display further information in hero container for the currently selected show.
+- Potential for a carousel with more shows in thw show list
+- Add more info to shows and display in the show hero, such as next showing, description and episodes.
 
 ### ASSUMPTIONS
 
-Img being used is a File (not a img src URL)
-Channel Logo is a File (not a img src URL)
+- Images being used are Files within the codebase and not URLs
+- Images have been treated already and are the same size / crop
+- All shows have a channel
