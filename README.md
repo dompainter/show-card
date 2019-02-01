@@ -35,3 +35,6 @@ Created with create-react-app as a starter.
 - Images being used are Files within the codebase and not URLs
 - Images have been treated already and are the same size / crop
 - All shows have a channel
+
+https://www.useloom.com/share/9da37399b0df40a3ae863eb73a862dda
+https://www.useloom.com/share/631f0b21e418422bb43af40e09593e47
