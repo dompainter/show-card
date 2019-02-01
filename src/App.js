@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import Card from './components/Card'
+import ShowHero from './components/ShowHero'
 import fetchChannels from './lib/channel-fetcher'
 import fetchShows from './lib/show-fetcher'
 import embellishShowWithChannelDetails from './lib/show-embellisher'
-import cardImg from './assets/img/card.png'
 
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
-    padding: 0;
     margin: 0;
     font-family: sans-serif;
-    height: 100%;
+    background-color: #fafafa;
   }
 `
 
@@ -21,7 +20,6 @@ const AppContainer = styled.div`
 `
 
 const AppHeader = styled.div`
-  background-color: #d1daec;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,36 +32,56 @@ const Title = styled.h1`
   font-size: 1.5em;
 `
 
-const Container = styled.div`
+const CardContainer = styled.div`
   background-image: url('./img/${props => props.img }');
   background-size: cover;
-  /* min-height: 160px; */
-  /* max-height: 250px; */
-  /* height: 100%; */
+  margin-bottom: 15px;
 `
 
 const Shows = styled.div`
+  margin-top: 30px;
   display: flex;
   justify-content: space-around;
-
+  flex-wrap: wrap;
 `
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      activeShow: {},
+      shows: fetchShows()
+    }
+
+    this.handleShowClick = this.handleShowClick.bind(this)
+  }
+
+  componentWillMount() {
+    this.setState({
+      activeShow: this.state.shows[0]
+    })
+  }
+
+  handleShowClick(show) {
+    this.setState({
+      activeShow: show
+    })
+  }
+
   render() {
     const channels = fetchChannels()
-    const shows = fetchShows()
-    const embellishedShows = embellishShowWithChannelDetails(shows, channels)
+    const embellishedShows = embellishShowWithChannelDetails(this.state.shows, channels)
     return (
       <AppContainer>
         <AppHeader>
-          <Title>Show Card</Title>
+          <Title>Show Case</Title>
         </AppHeader>
-        <img src={cardImg} alt="card" />
+        <ShowHero {...this.state.activeShow} />
         <Shows>
           { embellishedShows.map((show, i) => 
-            <Container id="container" img={show.image}>
-              <Card key={i} {...show} />
-            </Container>
+            <CardContainer id="container" img={show.image}>
+              <Card key={i} {...show} onClick={() => this.handleShowClick(show)} />
+            </CardContainer>
           )}
         </Shows>
         <GlobalStyle />

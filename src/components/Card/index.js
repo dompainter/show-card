@@ -2,13 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const CardContainer = styled.div`
-  /* background-image: url('./img/${props => props.img }'); */
-  /* background-size: cover; */
   min-height: 175px;
-  /* height: 100%; */
   min-width: 315px;
-  /* max-width: 445px; */
-  /* flex: 1; */
   position: relative;
 `
 
@@ -24,7 +19,6 @@ const CardBanner = styled.div`
 const ChannelLogo = styled.div`
   flex: 1;
   width: 100%;
-  /* margin: auto; */
   padding: 5px 8px;
 `
 
@@ -43,15 +37,14 @@ const ShowTitle = styled.span`
 `
 
 const Card = (props) => {
-	console.log('TCL: Card -> props', props)
-  const { name, image, __channelDetails } = props
+  const { name, image, __channelDetails, onClick } = props
   const { id, logo } = __channelDetails
   const imgStyle = {
     maxWidth: '40px'
   }
   
   return (
-    <CardContainer img={image}>
+    <CardContainer img={image} onClick={onClick}>
       <CardBanner>
         <CardContents>
           <ChannelLogo>
