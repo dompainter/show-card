@@ -36,13 +36,20 @@ const CardContainer = styled.div`
   background-image: url('./img/${props => props.img }');
   background-size: cover;
   margin-bottom: 15px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `
 
 const Shows = styled.div`
-  margin-top: 30px;
+  margin: 30px auto;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  max-width: 70%;
 `
 
 class App extends Component {
@@ -79,8 +86,8 @@ class App extends Component {
         <ShowHero {...this.state.activeShow} />
         <Shows>
           { embellishedShows.map((show, i) => 
-            <CardContainer id="container" img={show.image}>
-              <Card key={i} {...show} onClick={() => this.handleShowClick(show)} />
+            <CardContainer key={i} img={show.image}>
+              <Card {...show} onClick={() => this.handleShowClick(show)} />
             </CardContainer>
           )}
         </Shows>
