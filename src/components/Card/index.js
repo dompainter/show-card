@@ -37,7 +37,7 @@ const ShowTitle = styled.span`
 `
 
 const Card = (props) => {
-  const { name, image, __channelDetails, onClick } = props
+  const { name, image, __channelDetails = {}, onClick } = props
   const { id, logo } = __channelDetails
   const imgStyle = {
     maxWidth: '40px'
